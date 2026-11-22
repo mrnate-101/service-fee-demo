@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Service Fee Demo</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main>
+    <p class="badge">Practice checkout</p>
+    <h1>Pay a service fee</h1>
+    <p>Review an example fee and generate a demo receipt. No money changes hands.</p>
+    <section aria-labelledby="fee-title">
+      <h2 id="fee-title">Service details</h2>
+      <label for="service">Service</label>
+      <select id="service">
+        <option value="copy">Document copy</option>
+        <option value="appointment">Appointment booking</option>
+      </select>
+      <label for="reference">Demo reference</label>
+      <input id="reference" value="DEMO-001" maxlength="24" required spellcheck="false" autocomplete="off" aria-describedby="reference-help">
+      <small id="reference-help">Use a fictional reference with 3–24 letters, numbers, or hyphens.</small>
+      <p class="total">Amount due <output id="total" for="service"></output></p>
+      <button id="pay" type="button" disabled>Simulate payment</button>
+    </section>
+    <section id="receipt" aria-labelledby="receipt-title" hidden>
+      <h2 id="receipt-title" tabindex="-1">Demo receipt</h2>
+      <p>No funds were collected.</p>
+      <dl>
+        <dt>Service</dt><dd id="receipt-service"></dd>
+        <dt>Reference</dt><dd id="receipt-reference"></dd>
+        <dt>Amount</dt><dd id="receipt-total"></dd>
+      </dl>
+      <button id="reset" type="button">Start another demo</button>
+    </section>
+  </main>
+</body>
+</html>
